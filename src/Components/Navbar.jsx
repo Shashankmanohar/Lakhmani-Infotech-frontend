@@ -75,7 +75,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center">
           <Link to="/">
-            <img src={logo} alt="Lakhmani Infotech Logo" className="h-10 md:h-12 w-auto" />
+          <img src={logo} alt="Lakhmani Infotech Logo" className="h-10 md:h-12 w-auto" />
           </Link>
         </div>
         {/* Hamburger Icon (Mobile) */}
@@ -84,15 +84,15 @@ export default function Navbar() {
         </button>
         {/* Nav Links & Buttons (Desktop) */}
         <div className="hidden md:flex items-center space-x-6">
-          <ul className="flex space-x-6 font-semibold text-gray-700">
+          <ul className="flex space-x-6 font-semibold text-gray-700 overflow-hidden">
             {navItems.map((item, idx) => (
               <li
                 key={item.label}
-                className="relative group"
+                className="relative group flex-shrink-0"
                 onMouseEnter={() => item.dropdown && setDropdownOpen(idx)}
                 onMouseLeave={() => item.dropdown && setDropdownOpen(null)}
               >
-                <Link to={item.link} className="flex items-center cursor-pointer hover:text-[#3154d7] transition"
+                <Link to={item.link} className="flex items-center cursor-pointer hover:text-[#3154d7] transition px-1"
                   onClick={() => item.dropdown && setDropdownOpen(dropdownOpen === idx ? null : idx)}
                 >
                   {item.label}
@@ -109,7 +109,7 @@ export default function Navbar() {
                         className="px-4 py-2 hover:bg-[#f3f6fb] cursor-pointer text-gray-700 whitespace-nowrap"
                       >
                         <Link to={drop.link} className="block">
-                          {drop.label}
+                        {drop.label}
                         </Link>
                       </li>
                     ))}
@@ -118,10 +118,10 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-                      <div className="flex items-center space-x-3">
-              <Link to="/locations" className="bg-white border border-[#3154d7] text-[#3154d7] px-4 py-2 rounded font-semibold hover:bg-[#f3f6fb] transition">LOCATIONS</Link>
-              <Link to="/contact" className="bg-[#ff9c4b] text-white px-4 py-2 rounded font-semibold hover:bg-[#ff7c1b] transition">CONTACT US</Link>
-            </div>
+          <div className="flex items-center space-x-3 flex-shrink-0">
+              <Link to="/locations" className="bg-white border border-[#3154d7] text-[#3154d7] px-4 py-2 rounded font-semibold hover:bg-[#f3f6fb] transition whitespace-nowrap">LOCATIONS</Link>
+              <Link to="/contact" className="bg-[#ff9c4b] text-white px-4 py-2 rounded font-semibold hover:bg-[#ff7c1b] transition whitespace-nowrap">CONTACT US</Link>
+          </div>
         </div>
         {/* Mobile Menu */}
         {menuOpen && (
@@ -148,7 +148,7 @@ export default function Navbar() {
                           className="px-4 py-2 hover:bg-[#e0e7ff] cursor-pointer text-gray-700 whitespace-nowrap"
                         >
                           <Link to={drop.link} className="block">
-                            {drop.label}
+                          {drop.label}
                           </Link>
                         </li>
                       ))}

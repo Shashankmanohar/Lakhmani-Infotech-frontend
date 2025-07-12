@@ -37,7 +37,7 @@ export default function Banner() {
       ))}
       {/* Left Arrow */}
       <button
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 text-2xl text-[#3154d7] z-20 shadow hidden sm:flex items-center justify-center"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 sm:p-3 text-xl sm:text-2xl text-[#3154d7] z-20 shadow flex items-center justify-center"
         onClick={prevSlide}
         aria-label="Previous Slide"
       >
@@ -45,7 +45,7 @@ export default function Banner() {
       </button>
       {/* Right Arrow */}
       <button
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 text-2xl text-[#3154d7] z-20 shadow hidden sm:flex items-center justify-center"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-2 sm:p-3 text-xl sm:text-2xl text-[#3154d7] z-20 shadow flex items-center justify-center"
         onClick={nextSlide}
         aria-label="Next Slide"
       >

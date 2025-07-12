@@ -63,16 +63,16 @@ export default function Products() {
   return (
     <section className="max-w-5xl mx-auto py-8 px-2">
       <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Welcome To Lakhmani Infotech</h2>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product, idx) => (
           <div
             key={product.title}
-            className="bg-white shadow-md border border-gray-100 rounded-lg p-3 flex flex-col items-center hover:shadow-xl transition duration-300 max-w-xs mx-auto"
+            className="bg-white shadow-md border border-gray-100 rounded-lg p-3 flex flex-col items-center hover:shadow-xl transition duration-300 max-w-xs mx-auto w-full"
           >
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-24 object-contain mb-2 rounded"
+              className="w-full min-h-[120px] sm:min-h-[140px] md:min-h-[160px] lg:min-h-[180px] h-24 object-contain mb-2 rounded"
             />
             <h3 className="text-lg font-semibold mb-1 text-center">{product.title}</h3>
             <p className="text-gray-700 text-sm text-center">{product.description}</p>

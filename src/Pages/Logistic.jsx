@@ -61,7 +61,7 @@ export default function Logistic() {
         {/* Services Section */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-8">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {services.map((service) => (
               <div key={service.id} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div className={`w-16 h-16 bg-${service.color}-100 rounded-lg flex items-center justify-center mb-4`}>
@@ -123,7 +123,7 @@ export default function Logistic() {
         {/* Locations Section */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-8">Our Locations</h2>
-          <div className="grid grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-4 md:gap-6">
             {locations.map((location, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">

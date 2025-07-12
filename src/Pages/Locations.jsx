@@ -38,11 +38,11 @@ export default function Locations() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-2 sm:px-4 py-8">
         {/* Store Locations */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-8">Store Locations</h2>
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             {locations.map((location) => (
               <div key={location.id} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
                 <div className="flex items-center mb-4">
@@ -133,7 +133,7 @@ export default function Locations() {
         {/* Contact Information */}
         <div className="bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-lg p-8">
           <h2 className="text-3xl font-bold text-center mb-6">Need Help Finding Us?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center">
             <div>
               <FontAwesomeIcon icon={faPhone} className="text-3xl mb-4" />
               <h3 className="text-xl font-semibold mb-2">Call Us</h3>
