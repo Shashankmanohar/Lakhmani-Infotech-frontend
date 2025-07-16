@@ -3,26 +3,40 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLaptop, faHdd, faShieldAlt, faSearch, faFilter } from '@fortawesome/free-solid-svg-icons'
+// Import actual images
+import shoppingImg from '../assets/shopping.png';
+import scandiskImg from '../assets/scandisk.png';
+import cameraImg from '../assets/camera.jpg';
+import camera1Img from '../assets/camera1.jpg';
+import webcameraImg from '../assets/webcamera.jpg';
+import speakerImg from '../assets/speker.jpg';
+import speaker1Img from '../assets/speaker1.jpeg';
+import upsImg from '../assets/ups.jpg';
+import powerSupplyImg from '../assets/power_supply.jpg';
+import vloggingImg from '../assets/vlogging-gear-best-of-2019.jpg';
+import web2Img from '../assets/web2.jpg';
+import ImgWImg from '../assets/ImgW.jpg';
+import imagesImg from '../assets/images.jpg';
 
 const categories = [
   { 
     name: 'Pendrives', 
     icon: faLaptop,
-    count: 25,
+    count: 5,
     color: 'blue'
   },
   { 
     name: 'Hard Disk', 
     icon: faHdd,
-    count: 18,
+    count: 4,
     color: 'green'
   },
   { 
     name: 'Anti Virus', 
     icon: faShieldAlt,
-    count: 12,
+    count: 2,
     color: 'red'
-  }
+  },
 ]
 
 const products = [
@@ -30,9 +44,7 @@ const products = [
     id: 1,
     name: 'SanDisk 32GB USB 3.0 Pendrive',
     category: 'Pendrives',
-    price: '₹599',
-    originalPrice: '₹799',
-    image: '../assets/shopping.png',
+    image: scandiskImg,
     specs: '32GB, USB 3.0, High Speed',
     rating: 4.5
   },
@@ -40,51 +52,97 @@ const products = [
     id: 2,
     name: 'Seagate 1TB External HDD',
     category: 'Hard Disk',
-    price: '₹3,999',
-    originalPrice: '₹4,599',
-    image: '../assets/shopping.png',
+    image: shoppingImg,
     specs: '1TB, USB 3.0, Portable',
     rating: 4.6
   },
   {
     id: 3,
-    name: 'Kaspersky Internet Security',
-    category: 'Anti Virus',
-    price: '₹1,299',
-    originalPrice: '₹1,599',
-    image: '../assets/shopping.png',
-    specs: '1 Year, 3 Devices',
-    rating: 4.4
+    name: 'Digital Camera',
+    category: 'Pendrives',
+    image: cameraImg,
+    specs: '20MP, 4K Video, WiFi',
+    rating: 4.6
   },
   {
     id: 4,
-    name: 'Kingston 64GB USB 3.1 Pendrive',
+    name: 'Web Camera HD',
     category: 'Pendrives',
-    price: '₹899',
-    originalPrice: '₹1,199',
-    image: '../assets/shopping.png',
-    specs: '64GB, USB 3.1, Ultra Fast',
-    rating: 4.3
+    image: webcameraImg,
+    specs: '1080p HD, Auto Focus, USB',
+    rating: 4.4
   },
   {
     id: 5,
-    name: 'WD 2TB My Passport HDD',
+    name: 'Premium Speaker System',
     category: 'Hard Disk',
-    price: '₹6,999',
-    originalPrice: '₹7,999',
-    image: '../assets/shopping.png',
-    specs: '2TB, USB 3.0, Password Protection',
-    rating: 4.7
+    image: speaker1Img,
+    specs: '2.1 Channel, Bass Boost, Bluetooth',
+    rating: 4.5
   },
   {
     id: 6,
-    name: 'Norton 360 Deluxe',
+    name: 'UPS Backup System',
     category: 'Anti Virus',
-    price: '₹1,499',
-    originalPrice: '₹1,899',
-    image: '../assets/shopping.png',
-    specs: '1 Year, 5 Devices, VPN',
-    rating: 4.5
+    image: upsImg,
+    specs: '1100VA, 30 Min Backup, LCD Display',
+    rating: 4.7
+  },
+  {
+    id: 7,
+    name: 'Power Supply Unit',
+    category: 'Hard Disk',
+    image: powerSupplyImg,
+    specs: '650W, 80+ Bronze, Modular',
+    rating: 4.6
+  },
+  {
+    id: 8,
+    name: 'Compact Speaker',
+    category: 'Pendrives',
+    image: speakerImg,
+    specs: 'Portable, USB Powered, 3.5mm Jack',
+    rating: 4.3
+  },
+  {
+    id: 9,
+    name: 'Professional Camera Kit',
+    category: 'Hard Disk',
+    image: camera1Img,
+    specs: 'DSLR Camera, 18-55mm Lens, Tripod',
+    rating: 4.8
+  },
+  {
+    id: 10,
+    name: 'Vlogging Equipment Set',
+    category: 'Anti Virus',
+    image: vloggingImg,
+    specs: 'Ring Light, Microphone, Stand, Camera',
+    rating: 4.7
+  },
+  {
+    id: 11,
+    name: 'Web Development Kit',
+    category: 'Pendrives',
+    image: web2Img,
+    specs: 'USB Hub, HDMI Cable, Ethernet Cable',
+    rating: 4.4
+  },
+  {
+    id: 12,
+    name: 'Professional Audio Interface',
+    category: 'Hard Disk',
+    image: ImgWImg,
+    specs: 'USB Audio Interface, XLR Inputs, Phantom Power',
+    rating: 4.6
+  },
+  {
+    id: 13,
+    name: 'SanDisk 64GB USB 3.1 Pendrive',
+    category: 'Pendrives',
+    image: imagesImg,
+    specs: '64GB Storage, USB 3.1, Ultra Fast',
+    rating: 4.4
   }
 ]
 
@@ -189,8 +247,6 @@ export default function Accessories() {
               className="border border-gray-300 rounded px-3 py-1"
             >
               <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
               <option value="rating">Rating</option>
             </select>
           </div>
@@ -202,10 +258,7 @@ export default function Accessories() {
             <div key={product.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="p-4">
                 <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                  <FontAwesomeIcon 
-                    icon={getCategoryIcon(product.category)} 
-                    className={`text-4xl text-${getCategoryColor(product.category)}-400`} 
-                  />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                 </div>
                 <div className="mb-2">
                   <span className={`text-sm text-${getCategoryColor(product.category)}-600 font-semibold`}>
@@ -224,12 +277,7 @@ export default function Accessories() {
                   </div>
                   <span className="text-sm text-gray-600 ml-2">({product.rating})</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-lg font-bold text-green-600">{product.price}</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice}</span>
-                  </div>
-                </div>
+
               </div>
             </div>
           ))}

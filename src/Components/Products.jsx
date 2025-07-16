@@ -7,6 +7,13 @@ import tvImg from '../assets/tv.jpg';
 import scannerImg from '../assets/scanner.png';
 import powerSupplyImg from '../assets/power_supply.jpg';
 import pendriveImg from '../assets/scandisk.png';
+import computerImg from '../assets/computer.jpg';
+import cpuImg from '../assets/cpu.jpg';
+import cameraImg from '../assets/camera.jpg';
+import upsImg from '../assets/ups.jpg';
+import speaker1Img from '../assets/speaker1.jpeg';
+import printerJpegImg from '../assets/printer.jpeg';
+import brotherImg from '../assets/brother.jpg';
 
 const products = [
   {
@@ -55,7 +62,49 @@ const products = [
     title: 'Pendrive',
     image: pendriveImg,
     description:
-      'A pendrive is a small, portable flash memory card that plugs into a computer’s USB port and functions as a portable hard drive.',
+      'A pendrive is a small, portable flash memory card that plugs into a computer\'s USB port and functions as a portable hard drive.',
+  },
+  {
+    title: 'Desktop Computer',
+    image: computerImg,
+    description:
+      'A desktop computer is a personal computer designed for regular use at a single location on or near a desk or table due to its size and power requirements.',
+  },
+  {
+    title: 'CPU Processor',
+    image: cpuImg,
+    description:
+      'The central processing unit (CPU) is the primary component of a computer that processes instructions and performs calculations.',
+  },
+  {
+    title: 'Digital Camera',
+    image: cameraImg,
+    description:
+      'A digital camera is a camera that captures photographs in digital memory. Most cameras produced today are digital, largely replacing those that capture images on photographic film.',
+  },
+  {
+    title: 'UPS System',
+    image: upsImg,
+    description:
+      'An uninterruptible power supply (UPS) is an electrical apparatus that provides emergency power to a load when the input power source or mains power fails.',
+  },
+  {
+    title: 'Premium Speaker',
+    image: speaker1Img,
+    description:
+      'High-quality speakers designed for professional audio applications, delivering crystal clear sound with enhanced bass response.',
+  },
+  {
+    title: 'Laser Printer',
+    image: printerJpegImg,
+    description:
+      'A laser printer is a popular type of personal computer printer that uses a non-impact photocopier technology.',
+  },
+  {
+    title: 'Brother Printer',
+    image: brotherImg,
+    description:
+      'Brother printers are known for their reliability and high-quality printing capabilities, perfect for both home and office use.',
   },
 ];
 

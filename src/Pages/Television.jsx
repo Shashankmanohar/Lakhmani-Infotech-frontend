@@ -3,11 +3,16 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDesktop, faSearch, faFilter } from '@fortawesome/free-solid-svg-icons'
+// Import actual images
+import samsungLogoImg from '../assets/Logo-Samsung.png';
+import tvImg from '../assets/tv.jpg';
+import LGLOGO from '../assets/LGLOGO.png'
+import milogo from '../assets/mi logo.webp'
 
 const brands = [
-  { name: 'LG', logo: '../assets/Logo-Samsung.png', count: 8 },
-  { name: 'Samsung', logo: '../assets/Logo-Samsung.png', count: 12 },
-  { name: 'MI', logo: '../assets/microtech.png', count: 6 }
+  { name: 'LG', logo: LGLOGO, count: 8 },
+  { name: 'Samsung', logo: samsungLogoImg, count: 12 },
+  { name: 'MI', logo: milogo, count: 6 }
 ]
 
 const products = [
@@ -15,42 +20,11 @@ const products = [
     id: 1,
     name: 'Samsung 55" 4K Smart TV',
     brand: 'Samsung',
-    price: '₹45,999',
-    originalPrice: '₹52,999',
-    image: '../assets/tv.jpg',
+    image: tvImg,
     specs: '55" 4K UHD, Smart TV, HDR',
     rating: 4.6
   },
-  {
-    id: 2,
-    name: 'LG 43" Full HD Smart TV',
-    brand: 'LG',
-    price: '₹28,999',
-    originalPrice: '₹34,999',
-    image: '../assets/tv.jpg',
-    specs: '43" Full HD, WebOS, AI ThinQ',
-    rating: 4.4
-  },
-  {
-    id: 3,
-    name: 'MI 32" HD Smart TV',
-    brand: 'MI',
-    price: '₹15,999',
-    originalPrice: '₹18,999',
-    image: '../assets/tv.jpg',
-    specs: '32" HD, Android TV, PatchWall',
-    rating: 4.2
-  },
-  {
-    id: 4,
-    name: 'Samsung 65" QLED 4K TV',
-    brand: 'Samsung',
-    price: '₹89,999',
-    originalPrice: '₹99,999',
-    image: '../assets/tv.jpg',
-    specs: '65" QLED 4K, Quantum HDR',
-    rating: 4.7
-  }
+  
 ]
 
 export default function Television() {
@@ -93,7 +67,7 @@ export default function Television() {
               >
                 <div className="text-center">
                   <div className="w-20 h-20 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="font-bold text-xl">{brand.name}</span>
+                    <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain" />
                   </div>
                   <p className="font-semibold text-lg">{brand.name}</p>
                   <p className="text-sm text-gray-600">{brand.count} products</p>
@@ -141,8 +115,6 @@ export default function Television() {
               className="border border-gray-300 rounded px-3 py-1"
             >
               <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
               <option value="rating">Rating</option>
             </select>
           </div>
@@ -154,7 +126,7 @@ export default function Television() {
             <div key={product.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="p-4">
                 <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                  <FontAwesomeIcon icon={faDesktop} className="text-4xl text-gray-400" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                 </div>
                 <div className="mb-2">
                   <span className="text-sm text-purple-600 font-semibold">{product.brand}</span>
@@ -171,12 +143,7 @@ export default function Television() {
                   </div>
                   <span className="text-sm text-gray-600 ml-2">({product.rating})</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-lg font-bold text-green-600">{product.price}</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice}</span>
-                  </div>
-                </div>
+
               </div>
             </div>
           ))}

@@ -3,12 +3,27 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLaptop, faDesktop, faSearch, faFilter } from '@fortawesome/free-solid-svg-icons'
+// Import actual images
+import hpImg from '../assets/hp.jpg';
+import dellImg from '../assets/dell_laptop.png';
+import acerImg from '../assets/acer.png';
+import lenovoImg from '../assets/l1.png';
+import hp1Img from '../assets/hp1.png';
+import hp2Img from '../assets/hp2.png';
+import l2Img from '../assets/l2.jpg';
+import l3Img from '../assets/l3.jpg';
+import d2Img from '../assets/d2.png';
+import d3Img from '../assets/d3.png';
+import laptop2Img from '../assets/laptop2.jpg';
+import hp6Img from '../assets/hp6.jpg';
+import d1Img from '../assets/d1.png';
+import h12Img from '../assets/h12.png';
 
 const brands = [
-  { name: 'HP', logo: '../assets/hp.jpg', count: 15 },
-  { name: 'Dell', logo: '../assets/dell_laptop.png', count: 12 },
-  { name: 'Acer', logo: '../assets/acer.png', count: 8 },
-  { name: 'Lenovo', logo: '../assets/l1.png', count: 10 }
+  { name: 'HP', logo: hpImg, count: 15 },
+  { name: 'Dell', logo: dellImg, count: 12 },
+  { name: 'Acer', logo: acerImg, count: 8 },
+  { name: 'Lenovo', logo: lenovoImg, count: 10 }
 ]
 
 const products = [
@@ -16,9 +31,7 @@ const products = [
     id: 1,
     name: 'HP Pavilion Laptop',
     brand: 'HP',
-    price: '₹45,999',
-    originalPrice: '₹52,999',
-    image: '../assets/hp1.png',
+    image: hp1Img,
     specs: 'Intel i5, 8GB RAM, 512GB SSD',
     rating: 4.5
   },
@@ -26,9 +39,7 @@ const products = [
     id: 2,
     name: 'Dell Inspiron 15',
     brand: 'Dell',
-    price: '₹38,999',
-    originalPrice: '₹44,999',
-    image: '../assets/dell_laptop.png',
+    image: dellImg,
     specs: 'AMD Ryzen 5, 8GB RAM, 256GB SSD',
     rating: 4.3
   },
@@ -36,9 +47,7 @@ const products = [
     id: 3,
     name: 'Acer Aspire 5',
     brand: 'Acer',
-    price: '₹32,999',
-    originalPrice: '₹37,999',
-    image: '../assets/acer.png',
+    image: acerImg,
     specs: 'Intel i3, 8GB RAM, 1TB HDD',
     rating: 4.2
   },
@@ -46,11 +55,73 @@ const products = [
     id: 4,
     name: 'Lenovo IdeaPad',
     brand: 'Lenovo',
-    price: '₹41,999',
-    originalPrice: '₹47,999',
-    image: '../assets/l1.png',
+    image: lenovoImg,
     specs: 'Intel i5, 12GB RAM, 512GB SSD',
     rating: 4.4
+  },
+  {
+    id: 5,
+    name: 'HP EliteBook',
+    brand: 'HP',
+    image: hp2Img,
+    specs: 'Intel i7, 16GB RAM, 1TB SSD',
+    rating: 4.6
+  },
+  {
+    id: 6,
+    name: 'Lenovo ThinkPad',
+    brand: 'Lenovo',
+    image: l2Img,
+    specs: 'Intel i5, 8GB RAM, 512GB SSD',
+    rating: 4.5
+  },
+  {
+    id: 7,
+    name: 'Dell XPS 13',
+    brand: 'Dell',
+    image: d2Img,
+    specs: 'Intel i7, 16GB RAM, 1TB SSD',
+    rating: 4.7
+  },
+  {
+    id: 8,
+    name: 'Acer Swift 3',
+    brand: 'Acer',
+    image: l3Img,
+    specs: 'AMD Ryzen 7, 8GB RAM, 512GB SSD',
+    rating: 4.3
+  },
+  {
+    id: 9,
+    name: 'HP ProBook',
+    brand: 'HP',
+    image: hp6Img,
+    specs: 'Intel i5, 8GB RAM, 256GB SSD',
+    rating: 4.4
+  },
+  {
+    id: 10,
+    name: 'Dell Latitude',
+    brand: 'Dell',
+    image: d1Img,
+    specs: 'Intel i7, 16GB RAM, 512GB SSD',
+    rating: 4.6
+  },
+  {
+    id: 11,
+    name: 'Lenovo Yoga',
+    brand: 'Lenovo',
+    image: laptop2Img,
+    specs: 'Intel i5, 8GB RAM, 512GB SSD, 2-in-1',
+    rating: 4.5
+  },
+  {
+    id: 12,
+    name: 'Acer Predator',
+    brand: 'Acer',
+    image: d3Img,
+    specs: 'Intel i7, 16GB RAM, 1TB SSD, Gaming',
+    rating: 4.7
   }
 ]
 
@@ -94,7 +165,7 @@ export default function ComputerLaptops() {
               >
                 <div className="text-center">
                   <div className="w-16 h-16 mx-auto mb-2 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <span className="font-bold text-lg">{brand.name}</span>
+                    <img src={brand.logo} alt={brand.name} className="w-full h-full object-contain" />
                   </div>
                   <p className="font-semibold">{brand.name}</p>
                   <p className="text-sm text-gray-600">{brand.count} products</p>
@@ -142,8 +213,6 @@ export default function ComputerLaptops() {
               className="border border-gray-300 rounded px-3 py-1"
             >
               <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
               <option value="rating">Rating</option>
             </select>
           </div>
@@ -155,7 +224,7 @@ export default function ComputerLaptops() {
             <div key={product.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="p-4">
                 <div className="w-full h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                  <FontAwesomeIcon icon={faLaptop} className="text-4xl text-gray-400" />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
                 </div>
                 <div className="mb-2">
                   <span className="text-sm text-blue-600 font-semibold">{product.brand}</span>
@@ -172,12 +241,7 @@ export default function ComputerLaptops() {
                   </div>
                   <span className="text-sm text-gray-600 ml-2">({product.rating})</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-lg font-bold text-green-600">{product.price}</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">{product.originalPrice}</span>
-                  </div>
-                </div>
+
               </div>
             </div>
           ))}

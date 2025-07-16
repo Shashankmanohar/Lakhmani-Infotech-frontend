@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faEnvelope, faMapMarkerAlt, faClock, faUser, faMessage } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faEnvelope, faMapMarkerAlt, faClock, faUser, faMessage, faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 
 const contactInfo = [
   {
@@ -32,33 +32,44 @@ const contactInfo = [
 ]
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    })
+    const formData = new FormData(event.target)
+    formData.append("access_key", "b2fa070d-34cb-4581-bd2e-ce9c5f639691")
+
+    const object = Object.fromEntries(formData)
+    const json = JSON.stringify(object)
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      }).then((res) => res.json())
+
+      if (res.success) {
+        setSubmitStatus('success')
+        event.target.reset() // Reset the form
+        console.log("Success", res)
+      } else {
+        setSubmitStatus('error')
+        console.log("Error", res)
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      console.log("Error", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -123,6 +134,22 @@ export default function Contact() {
           {/* Contact Form */}
           <div>
             <h2 className="text-3xl font-bold mb-8">Send Us a Message</h2>
+            
+            {/* Success/Error Messages */}
+            {submitStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center space-x-2">
+                <FontAwesomeIcon icon={faCheckCircle} className="text-green-600" />
+                <span>Thank you! Your message has been sent successfully. We'll get back to you soon.</span>
+              </div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center space-x-2">
+                <FontAwesomeIcon icon={faExclamationCircle} className="text-red-600" />
+                <span>Sorry! There was an error sending your message. Please try again.</span>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
@@ -133,8 +160,6 @@ export default function Contact() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Enter your full name"
@@ -148,8 +173,6 @@ export default function Contact() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Enter your email"
@@ -166,8 +189,6 @@ export default function Contact() {
                     type="tel"
                     id="phone"
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Enter your phone number"
                   />
@@ -180,8 +201,6 @@ export default function Contact() {
                     type="text"
                     id="subject"
                     name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
                     placeholder="Enter subject"
@@ -196,8 +215,6 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   required
                   rows="6"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -207,9 +224,14 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full bg-teal-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-teal-700 transition duration-300"
+                disabled={isSubmitting}
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition duration-300 ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-teal-600 hover:bg-teal-700 text-white'
+                }`}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
