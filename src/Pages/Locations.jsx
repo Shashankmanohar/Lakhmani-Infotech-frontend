@@ -52,7 +52,10 @@ export default function Locations() {
                 <FontAwesomeIcon icon={faPhone} className="mr-2" />
                 +91-9470485009
               </button>
-              <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition flex items-center justify-center">
+              <button
+                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition flex items-center justify-center"
+                onClick={() => window.location.href = 'mailto:Lakhmani.patna@gmail.com'}
+              >
                 <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                 Email Us
               </button>
@@ -165,14 +168,22 @@ export default function Locations() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center text-lg">
+                  <a
+                    href="tel:+919470485009"
+                    className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center text-lg"
+                  >
                     <FontAwesomeIcon icon={faPhone} className="mr-3" />
                     Call Store Now
-                  </button>
-                  <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition flex items-center justify-center text-lg">
+                  </a>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(location.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition flex items-center justify-center text-lg"
+                  >
                     <FontAwesomeIcon icon={faDirections} className="mr-3" />
                     Get Directions
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -187,47 +198,31 @@ export default function Locations() {
           </div>
           <div className="bg-white rounded-xl p-8 shadow-lg">
             <div className="w-full h-80 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg flex items-center justify-center mb-6">
-              <div className="text-center">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-6xl text-blue-500 mb-4" />
-                <p className="text-gray-600 font-medium">Interactive Map Coming Soon</p>
-                <p className="text-sm text-gray-500 mt-2">Click on markers to see store details</p>
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2735.8370981957282!2d85.13755890960826!3d25.6111237773527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed585b8d3f6987%3A0xf41e011ee43fb4be!2sLakhmani%20Infotech!5e1!3m2!1sen!2sin!4v1752824544683!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: '0.75rem' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Lakhmani Infotech Location Map"
+              ></iframe>
             </div>
             <div className="text-center">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              <a
+                href="https://www.google.com/maps/place/Lakhmani+Infotech/@25.6111238,85.1375589,17z/data=!3m1!4b1!4m6!3m5!1s0x39ed585b8d3f6987:0xf41e011ee43fb4be!8m2!3d25.6111238!4d85.1397476!16s%2Fg%2F11c4y1w2wz?entry=ttu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition inline-block"
+              >
                 Open in Google Maps
-              </button>
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-12">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Need Help Finding Us?</h2>
-            <p className="text-xl opacity-90">We're here to help you locate our store</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center bg-white bg-opacity-10 rounded-xl p-6">
-              <FontAwesomeIcon icon={faPhone} className="text-4xl mb-4" />
-              <h3 className="text-2xl font-semibold mb-3">Call Us</h3>
-              <p className="text-lg font-medium">+91-9470485009</p>
-              <p className="text-sm opacity-90 mt-2">24/7 Customer Support</p>
-            </div>
-            <div className="text-center bg-white bg-opacity-10 rounded-xl p-6">
-              <FontAwesomeIcon icon={faEnvelope} className="text-4xl mb-4" />
-              <h3 className="text-2xl font-semibold mb-3">Email Us</h3>
-              <p className="text-lg font-medium">info@lakhmani.com</p>
-              <p className="text-sm opacity-90 mt-2">Quick Response</p>
-            </div>
-            <div className="text-center bg-white bg-opacity-10 rounded-xl p-6">
-              <FontAwesomeIcon icon={faClock} className="text-4xl mb-4" />
-              <h3 className="text-2xl font-semibold mb-3">Visit Us</h3>
-              <p className="text-lg font-medium">Mon-Sat: 9:00 AM - 7:00 PM</p>
-              <p className="text-sm opacity-90 mt-2">Sunday: Closed</p>
-            </div>
-          </div>
-        </div>
+        
       </div>
 
       <Footer />

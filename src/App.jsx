@@ -9,6 +9,7 @@ import Logistic from './Pages/Logistic'
 import Locations from './Pages/Locations'
 import Contact from './Pages/Contact'
 import Products from './Pages/Products'
+import OrderForm from './Pages/OrderForm';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/locations" element={<Locations />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/order/:category/:productId" element={<OrderForm />} />
       </Routes>
     </Router>
   )

@@ -17,12 +17,12 @@ import d3Img from '../assets/d3.png';
 import laptop2Img from '../assets/laptop2.jpg';
 import hp6Img from '../assets/hp6.jpg';
 import d1Img from '../assets/d1.png';
-import h12Img from '../assets/h12.png';
+import { Link } from 'react-router-dom';
 
 const brands = [
   { name: 'HP', logo: hpImg, count: 15 },
   { name: 'Dell', logo: dellImg, count: 12 },
-  { name: 'Acer', logo: acerImg, count: 8 },
+  { name: 'Acer', logo: acerImg, count: 8 }, 
   { name: 'Lenovo', logo: lenovoImg, count: 10 }
 ]
 
@@ -241,7 +241,12 @@ export default function ComputerLaptops() {
                   </div>
                   <span className="text-sm text-gray-600 ml-2">({product.rating})</span>
                 </div>
-
+                <Link
+                  to={`/order/computer-laptops/${product.id}`}
+                  className="block mt-4 bg-blue-600 text-white text-center py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+                >
+                  Order Now
+                </Link>
               </div>
             </div>
           ))}

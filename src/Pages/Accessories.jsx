@@ -277,6 +277,12 @@ export default function Accessories() {
                   </div>
                   <span className="text-sm text-gray-600 ml-2">({product.rating})</span>
                 </div>
+                <a
+                  href={`/order/accessories/${product.id}`}
+                  className="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition text-center w-full"
+                >
+                  Order Now
+                </a>
 
               </div>
             </div>

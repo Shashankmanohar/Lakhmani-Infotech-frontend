@@ -96,9 +96,6 @@ export default function Navbar() {
                   onClick={() => item.dropdown && setDropdownOpen(dropdownOpen === idx ? null : idx)}
                 >
                   {item.label}
-                  {item.dropdown && (
-                    <FontAwesomeIcon icon={faChevronDown} className="ml-1 text-xs" />
-                  )}
                 </Link>
                 {/* Dropdown (Desktop) */}
                 {item.dropdown && dropdownOpen === idx && (
@@ -135,9 +132,6 @@ export default function Navbar() {
                     onClick={() => item.dropdown ? setMobileDropdownOpen(mobileDropdownOpen === idx ? null : idx) : setMenuOpen(false)}
                   >
                     {item.label}
-                    {item.dropdown && (
-                      <FontAwesomeIcon icon={faChevronDown} className="ml-1 text-xs" />
-                    )}
                   </Link>
                   {/* Dropdown (Mobile) */}
                   {item.dropdown && mobileDropdownOpen === idx && (

@@ -33,7 +33,7 @@ const contactInfo = [
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
+  const [submitStatus, setSubmitStatus] = useState(null) 
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -58,8 +58,7 @@ export default function Contact() {
 
       if (res.success) {
         setSubmitStatus('success')
-        event.target.reset() // Reset the form
-        console.log("Success", res)
+        event.target.reset() 
       } else {
         setSubmitStatus('error')
         console.log("Error", res)

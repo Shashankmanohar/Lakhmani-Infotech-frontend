@@ -155,14 +155,20 @@ export default function Logistic() {
           <h2 className="text-3xl font-bold mb-4">Need Logistics Support?</h2>
           <p className="text-xl mb-6 opacity-90">Contact us for custom shipping solutions and bulk delivery options</p>
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+            <a
+              href={`tel:${locations[0].phone.replace(/[^+\d]/g, '')}`}
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition flex items-center justify-center"
+            >
               <FontAwesomeIcon icon={faPhone} className="mr-2" />
               Call Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+            </a>
+            <a
+              href={`mailto:${locations[0].email}`}
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition flex items-center justify-center"
+            >
               <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
               Email Us
-            </button>
+            </a>
           </div>
         </div>
       </div>
