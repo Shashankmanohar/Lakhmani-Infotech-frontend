@@ -22,20 +22,12 @@ const categories = [
   { 
     name: 'Pendrives', 
     icon: faLaptop,
-    count: 5,
     color: 'blue'
   },
   { 
-    name: 'Hard Disk', 
-    icon: faHdd,
-    count: 4,
-    color: 'green'
-  },
-  { 
-    name: 'Anti Virus', 
-    icon: faShieldAlt,
-    count: 2,
-    color: 'red'
+    name: 'Camera', 
+    icon: faLaptop, // You may want to use a camera icon here
+    color: 'purple'
   },
 ]
 
@@ -51,7 +43,7 @@ const products = [
   {
     id: 2,
     name: 'Seagate 1TB External HDD',
-    category: 'Hard Disk',
+    category: 'Pendrives', // Move to Pendrives or remove if not needed
     image: shoppingImg,
     specs: '1TB, USB 3.0, Portable',
     rating: 4.6
@@ -59,7 +51,7 @@ const products = [
   {
     id: 3,
     name: 'Digital Camera',
-    category: 'Pendrives',
+    category: 'Camera',
     image: cameraImg,
     specs: '20MP, 4K Video, WiFi',
     rating: 4.6
@@ -67,7 +59,7 @@ const products = [
   {
     id: 4,
     name: 'Web Camera HD',
-    category: 'Pendrives',
+    category: 'Camera',
     image: webcameraImg,
     specs: '1080p HD, Auto Focus, USB',
     rating: 4.4
@@ -75,7 +67,7 @@ const products = [
   {
     id: 5,
     name: 'Premium Speaker System',
-    category: 'Hard Disk',
+    category: 'Pendrives', // Move to Pendrives or remove if not needed
     image: speaker1Img,
     specs: '2.1 Channel, Bass Boost, Bluetooth',
     rating: 4.5
@@ -83,7 +75,7 @@ const products = [
   {
     id: 6,
     name: 'UPS Backup System',
-    category: 'Anti Virus',
+    category: 'Pendrives', // Move to Pendrives or remove if not needed
     image: upsImg,
     specs: '1100VA, 30 Min Backup, LCD Display',
     rating: 4.7
@@ -91,7 +83,7 @@ const products = [
   {
     id: 7,
     name: 'Power Supply Unit',
-    category: 'Hard Disk',
+    category: 'Pendrives', // Move to Pendrives or remove if not needed
     image: powerSupplyImg,
     specs: '650W, 80+ Bronze, Modular',
     rating: 4.6
@@ -107,7 +99,7 @@ const products = [
   {
     id: 9,
     name: 'Professional Camera Kit',
-    category: 'Hard Disk',
+    category: 'Camera',
     image: camera1Img,
     specs: 'DSLR Camera, 18-55mm Lens, Tripod',
     rating: 4.8
@@ -115,7 +107,7 @@ const products = [
   {
     id: 10,
     name: 'Vlogging Equipment Set',
-    category: 'Anti Virus',
+    category: 'Camera',
     image: vloggingImg,
     specs: 'Ring Light, Microphone, Stand, Camera',
     rating: 4.7
@@ -131,7 +123,7 @@ const products = [
   {
     id: 12,
     name: 'Professional Audio Interface',
-    category: 'Hard Disk',
+    category: 'Pendrives', // Move to Pendrives or remove if not needed
     image: ImgWImg,
     specs: 'USB Audio Interface, XLR Inputs, Phantom Power',
     rating: 4.6
@@ -150,9 +142,11 @@ export default function Accessories() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [sortBy, setSortBy] = useState('featured')
 
-  const filteredProducts = selectedCategory === 'All' 
-    ? products 
-    : products.filter(product => product.category === selectedCategory)
+  const filteredProducts = selectedCategory === 'All'
+    ? products
+    : products.filter(product =>
+        product.category.toLowerCase().trim() === selectedCategory.toLowerCase().trim()
+      )
 
   const getCategoryIcon = (categoryName) => {
     const category = categories.find(cat => cat.name === categoryName)
@@ -184,28 +178,33 @@ export default function Accessories() {
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Shop by Category</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {categories.map((category) => (
-              <div
-                key={category.name}
-                onClick={() => setSelectedCategory(category.name)}
-                className={`p-6 rounded-lg border-2 cursor-pointer transition-all ${
-                  selectedCategory === category.name
-                    ? `border-${category.color}-500 bg-${category.color}-50`
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                <div className="text-center">
-                  <div className={`w-16 h-16 mx-auto mb-3 bg-${category.color}-100 rounded-lg flex items-center justify-center`}>
-                    <FontAwesomeIcon 
-                      icon={category.icon} 
-                      className={`text-2xl text-${category.color}-600`} 
-                    />
+            {categories.map((category) => {
+              const productCount = products.filter(
+                (product) => product.category.toLowerCase().trim() === category.name.toLowerCase().trim()
+              ).length;
+              return (
+                <div
+                  key={category.name}
+                  onClick={() => setSelectedCategory(category.name)}
+                  className={`p-6 rounded-lg border-2 cursor-pointer transition-all ${
+                    selectedCategory === category.name
+                      ? `border-${category.color}-500 bg-${category.color}-50`
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  <div className="text-center">
+                    <div className={`w-16 h-16 mx-auto mb-3 bg-${category.color}-100 rounded-lg flex items-center justify-center`}>
+                      <FontAwesomeIcon 
+                        icon={category.icon} 
+                        className={`text-2xl text-${category.color}-600`} 
+                      />
+                    </div>
+                    <p className="font-semibold text-lg">{category.name}</p>
+                    <p className="text-sm text-gray-600">{productCount} products</p>
                   </div>
-                  <p className="font-semibold text-lg">{category.name}</p>
-                  <p className="text-sm text-gray-600">{category.count} products</p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
